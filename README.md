@@ -18,7 +18,7 @@ Rug-Pull Radar takes that token and gives back:
 - a **traffic light** (green, yellow, red),
 - the **top three reasons** for the score, in plain English (from SHAP).
 
-**The website** ([rugrat.xyz](https://rugrat.xyz)) does all of this in the browser. The live check runs on a small Vercel server function that reads the blockchain with Etherscan and scores the token with the same XGBoost model, exported from the notebook (Part 10). The Etherscan key stays on the server. The source is in the [`website`](website) folder.
+**The website** ([rugrat.xyz](https://rugrat.xyz)) does all of this in the browser. The live check runs on a small Vercel server function that reads the blockchain with Etherscan and scores the token with the same XGBoost model, exported from the notebook (Part 10). The Etherscan key stays on the server.
 
 The notebook's Gradio demo has three tabs. In **Rug-Pull Radar** you pick a token from the test set, which the model never saw during training. You see its score and reasons, and then what actually happened to it. In **Pump Alarm** you paste a Telegram message and get an alarm score and the top words behind it (see the add-on below). In **Paste an address** you enter a live Uniswap V2 token address, and the tool rebuilds its launch and first-hour features from the public blockchain with Etherscan, then scores it.
 
