@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+@theme {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+  --color-bg: #08090a;
+  --color-surface: #0e0f11;
+  --color-raised: #15161a;
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.14);
+  --color-ink: #f4f4f0;
+  --color-muted: #9a9ca3;
+  --color-faint: #5d6067;
+  --color-high: #ff5a4e;
+  --color-caution: #ffb547;
+  --color-lower: #3ee08f;
+  --animate-sweep: sweep 6s linear infinite;
+  --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(.2,.6,.2,1) infinite;
+  --animate-shimmer: shimmer 2.2s linear infinite;
+  @keyframes sweep { to { transform: rotate(360deg); } }
+  @keyframes pulse-ring { 0% { transform: scale(.6); opacity: .9 } 100% { transform: scale(1.8); opacity: 0 } }
+  @keyframes shimmer { from { background-position: -200% 0 } to { background-position: 200% 0 } }
+}
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+}
+::selection { background: rgb(255 90 78 / .35); }
+
+.eyebrow { @apply font-mono text-[11px] uppercase tracking-[0.16em] text-muted; }
+.hairline { background-image: linear-gradient(to right, transparent, rgb(255 255 255 / .12), transparent); height: 1px; }
+.card {
+  @apply rounded-2xl border border-line bg-surface;
+  box-shadow: 0 1px 0 0 rgb(255 255 255 / .04) inset, 0 30px 60px -30px rgb(0 0 0 / .6);
+}
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / .035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / .035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.text-balance { text-wrap: balance; }
+.num { font-variant-numeric: tabular-nums; }
+.shimmer {
+  background: linear-gradient(90deg, rgb(255 255 255 / .04) 25%, rgb(255 255 255 / .1) 50%, rgb(255 255 255 / .04) 75%);
+  background-size: 200% 100%;
+  @apply animate-shimmer;
+}
+input::placeholder, textarea::placeholder { color: var(--color-faint); }
+
+/* Auto-rotating example tabs: progress bar fills, then the next tab opens */
+@keyframes demo-progress { from { width: 0% } to { width: 100% } }
+.demo-progress { width: 0%; animation-name: demo-progress; animation-timing-function: linear; animation-fill-mode: forwards; }
+@media (prefers-reduced-motion: reduce) { .demo-progress { animation-duration: 12000ms !important; } }
+
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

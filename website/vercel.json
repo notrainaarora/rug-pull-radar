@@ -1,0 +1,4 @@
+{
+  "functions": { "api/score.js": { "maxDuration": 60, "includeFiles": "data.json" } },
+  "headers": [{ "source": "/data.json", "headers": [{ "key": "cache-control", "value": "public, max-age=300" }] }]
+}
